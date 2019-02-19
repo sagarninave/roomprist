@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RoomPrist</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style type="text/css">
+		.data{
+			width:100%;
+			height: auto;
+			background: #d4d4d4;
+		}
+		.name{
+			background:#FFF;
+			margin-top: 20px;
+			margin-bottom: 20px;
+			border-radius: 5px;
+			padding:10px;
+		}
+		.color{
+			background-color: coral;
+		}
+		.img{
+			width:230px;
+			height: 230px;
+			border:2px solid gray;
+			border-radius: 5px;
+			clear: both;
+			float: left;
+			margin-right: 20px;
+		}
+		.title{
+			text-align: left;
+			font-size: 30px;
+			font-weight: bold;
+			text-transform: uppercase;
+
+		}
+		.title span{
+			font-size:15px;
+			text-transform: capitalize;
+		}
+		.contact{
+			text-align: left;
+			font-size: 20px;
+			font-weight: bold;
+			text-transform: capitalize;
+		}
+		.contact span{
+			font-size: 15px;
+			margin-right: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<nav class="navbar navbar-inverse">
+  			<div class="container-fluid">
+    			<div class="navbar-header">
+     				 <a class="navbar-brand" href="#">RoomPrist</a>
+    			</div>
+    			<ul class="nav navbar-nav">
+    			  <li class="active"><a href="#">Home</a></li>
+     			  <li><a href="#">Profile</a></li>
+    			</ul>
+  			</div>
+		</nav>
+		<div class="container">
+			{% for item in data %}
+			<div class="row data">
+				<div class="col-md-12">
+					<div class="name">
+
+						<div class="img img-responsive"> {{item.image}} </div>
+						<div class="title">
+							{{item.rooms.title}} <br> 
+							<span> Owner : {{item.first_name}} {{item.last_name}} </span>
+						</div >
+						
+                    	<div class="contact">
+              				<span> Phone : {{item.contact.phone}} </span> 
+                    		<span> Email : {{item.contact.email}} </span>
+                    	</div>
+					
+						<div class="contact">
+							<span> Description : {{item.rooms.description}}</span>
+						</div>
+						<div class="contact">
+							<span> Price : {{item.rooms.offer_price}}</span>
+						</div>
+				
+						<div class="contact">
+							<span> Location : 
+											{{item.location.address_line1}}
+											{{item.location.address_line2}}
+											{{item.location.landmark}}
+											{{item.location.city}}
+											{{item.location.state}}
+							</span>
+						</div>
+						<div class="contact">
+							<span> Post Date : {{item.rooms.pub_date}}</span>
+						</div>
+					</div>
+				</div>
+			</div>    
+			{% endfor %}      
+		</div>
+	</div>
+</body>
+</html>
